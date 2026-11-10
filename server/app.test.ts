@@ -80,7 +80,7 @@ test('sessions restore the current account and reject forged or expired cookies'
   const response = await request('/api/auth/session', 'GET', undefined, alice.cookie);
   expect((await response.json()).user.id).toBe(alice.user.id);
   expect((await request('/api/auth/session')).status).toBe(401);
-  expect((await request('/api/auth/session', 'GET', undefined, 'skype_session=' + 'a'.repeat(64))).status).toBe(401);
+  expect((await request('/api/auth/session', 'GET', undefined, 'conva_session=' + 'a'.repeat(64))).status).toBe(401);
   const expired = await register('expired@example.com');
   db.query('UPDATE sessions SET expiresAt = 0 WHERE userId = ?').run(expired.user.id);
   expect((await request('/api/auth/session', 'GET', undefined, expired.cookie)).status).toBe(401);

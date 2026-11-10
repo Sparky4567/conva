@@ -2,7 +2,7 @@ import { createHash, randomBytes } from 'node:crypto';
 import { account, db, deleteAccount, publicUser, type Account } from './store';
 
 export const SESSION_SECONDS = 7 * 24 * 60 * 60;
-const COOKIE = 'skype_session';
+const COOKIE = 'conva_session';
 export type Session = { tokenHash: string; userId: string; expiresAt: number };
 const digest = (token: string) => createHash('sha256').update(token).digest('hex');
 export function sessionFor(req: Request): Session | null {

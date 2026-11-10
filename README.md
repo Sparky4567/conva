@@ -1,6 +1,6 @@
-# Skype Connect
+# Conva
 
-A Skype-inspired messaging app built with React 19, TypeScript, Bun WebSockets, SQLite, and WebRTC.
+A messaging app for conversations, groups, and calls built with React 19, TypeScript, Bun WebSockets, SQLite, and WebRTC.
 
 Licensed under the [MIT License](LICENSE).
 

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { authRequest, type CurrentUser } from './api';
 import { Icon } from './Icons';
+import { Brand } from './Brand';
 
 export function Auth({ onAuthenticated }: { onAuthenticated(user: CurrentUser): void }) {
   const [register, setRegister] = useState(false);
@@ -24,7 +25,7 @@ export function Auth({ onAuthenticated }: { onAuthenticated(user: CurrentUser): 
   }
 
   return <main className="auth-page">
-    <section className="auth-story"><a className="auth-brand" href="/">skype</a><div><span className="intro-icon"><Icon name="chat" size={34}/></span><h1>Your people.<br/>A little closer.</h1><p>Big ideas, little updates, and familiar voices.<br/>Make room for the conversations that matter.</p></div><small>A little closer, wherever you are.</small></section>
+    <section className="auth-story"><a className="auth-brand" href="/" aria-label="Conva home"><Brand/></a><div><span className="intro-icon"><Icon name="chat" size={34}/></span><h1>Your people.<br/>A little closer.</h1><p>Big ideas, little updates, and familiar voices.<br/>Make room for the conversations that matter.</p></div><small>A little closer, wherever you are.</small></section>
     <section className="auth-panel"><form className="auth-form" onSubmit={submit}>
       <span className="modal-icon"><Icon name={register ? 'users' : 'chat'} size={26}/></span>
       <h2>{register ? 'Create your account' : 'Welcome back'}</h2>
@@ -35,7 +36,7 @@ export function Auth({ onAuthenticated }: { onAuthenticated(user: CurrentUser): 
       <label className="field">Password<input required type="password" autoComplete={register ? 'new-password' : 'current-password'} minLength={register ? 12 : 1} maxLength={128} value={password} onChange={e => setPassword(e.target.value)} placeholder={register ? 'At least 12 characters' : 'Your password'} disabled={busy}/></label>
       {register && <label className="field">Confirm password<input required type="password" autoComplete="new-password" maxLength={128} value={confirmation} onChange={e => setConfirmation(e.target.value)} disabled={busy}/></label>}
       <button className="primary full" disabled={busy}>{busy ? 'Please wait…' : register ? 'Create account' : 'Sign in'}<Icon name="chevron" size={17}/></button>
-      <p className="auth-switch">{register ? 'Already have an account?' : 'New to Skype?'} <button type="button" disabled={busy} onClick={() => { setRegister(!register); setPassword(''); setConfirmation(''); setError(''); }}>{register ? 'Sign in' : 'Create an account'}</button></p>
+      <p className="auth-switch">{register ? 'Already have an account?' : 'New to Conva?'} <button type="button" disabled={busy} onClick={() => { setRegister(!register); setPassword(''); setConfirmation(''); setError(''); }}>{register ? 'Sign in' : 'Create an account'}</button></p>
     </form></section>
   </main>;
 }

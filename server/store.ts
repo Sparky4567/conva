@@ -38,7 +38,7 @@ if (!db.query('SELECT id FROM migrations WHERE id = ?').get('remove-demo-profile
 
 export type Account = { id: string; email: string; name: string; passwordHash: string; color: string; createdAt: number };
 export function account(id: string) { return db.query('SELECT * FROM accounts WHERE id = ?').get(id) as Account | null; }
-export function publicUser(row: Account): User { return { id: row.id, name: row.name, color: row.color, role: 'Skype member' }; }
+export function publicUser(row: Account): User { return { id: row.id, name: row.name, color: row.color, role: 'Conva member' }; }
 export function users(): User[] { return (db.query('SELECT * FROM accounts ORDER BY name').all() as Account[]).map(publicUser); }
 export function chats(): Chat[] {
   return (db.query('SELECT * FROM chats').all() as { id: string; name: string; members: string; isGroup: number }[])
